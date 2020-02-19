@@ -5,12 +5,22 @@
   <artifactId>downmarker</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
+  <name>Downmarker</name>
+  <url>https://github.com/fusions/downmarker</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
     <junit.jupiter.version>5.6.0</junit.jupiter.version>
+    <github.global.server>github</github.global.server>
+    <skipTests>true</skipTests>
   </properties>
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <url>file://${project.build.directory}/maven-repository</url>
+    </repository>
+  </distributionManagement>
   <build>
     <resources>
       <resource>
@@ -35,6 +45,21 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <groupId>com.github.github</groupId>
+          <artifactId>site-maven-plugin</artifactId>
+          <version>0.12</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.8.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
       </plugins>
@@ -64,7 +89,24 @@
           </execution>
         </executions>
       </plugin>
-  </plugins>
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>site-maven-plugin</artifactId>
+        <configuration>
+          <message>update Maven artifacts for ${project.version}</message>
+          <outputDirectory>${project.build.directory}/maven-repository</outputDirectory>
+          <branch>refs/heads/maven</branch>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>site</goal>
+            </goals>
+            <phase>site</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
   <dependencies>
     <dependency>

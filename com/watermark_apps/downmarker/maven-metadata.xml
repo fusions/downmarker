@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.watermark_apps</groupId>
+  <artifactId>downmarker</artifactId>
+  <versioning>
+    <versions>
+      <version>0.1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20200219070658</lastUpdated>
+  </versioning>
+</metadata>

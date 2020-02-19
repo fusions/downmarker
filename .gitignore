@@ -1,0 +1,9 @@
+/.classpath
+/.env
+/.idea/
+/.project
+/.settings/
+/.vscode/
+/docker-compose.yml
+/target/
+/*.iml

@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app:
+    build: .
+    user: "${APP_USER}"
+    volumes:
+      - ".:/usr/src/mymaven"
+      - "~/.m2:/var/maven/.m2"
+    working_dir: /usr/src/mymaven
+    command: tail -f /dev/null
+    environment:
+      MAVEN_CONFIG: "/var/maven/.m2"
+      MAVEN_OPTS: "-Duser.home=/var/maven"

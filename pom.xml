@@ -12,13 +12,13 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
     <junit.jupiter.version>5.6.0</junit.jupiter.version>
-    <github.global.server>github</github.global.server>
     <skipTests>true</skipTests>
   </properties>
   <distributionManagement>
     <repository>
       <id>github</id>
-      <url>file://${project.build.directory}/maven-repository</url>
+      <name>GitHub fusions Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/fusions/downmarker</url>
     </repository>
   </distributionManagement>
   <build>
@@ -46,11 +46,6 @@
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
           <version>3.0.0</version>
-        </plugin>
-        <plugin>
-          <groupId>com.github.github</groupId>
-          <artifactId>site-maven-plugin</artifactId>
-          <version>0.12</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -86,23 +81,6 @@
                 </resource>
               </resources>
             </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>com.github.github</groupId>
-        <artifactId>site-maven-plugin</artifactId>
-        <configuration>
-          <message>update Maven artifacts for ${project.version}</message>
-          <outputDirectory>${project.build.directory}/maven-repository</outputDirectory>
-          <branch>refs/heads/maven</branch>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>site</goal>
-            </goals>
-            <phase>site</phase>
           </execution>
         </executions>
       </plugin>

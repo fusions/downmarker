@@ -32,6 +32,6 @@ public class TextRenderer implements IRenderer {
 
     @Override
     public String renderParagraph(String text) {
-        return text;
+        return text + "\n";
     }
 }
